@@ -10,7 +10,11 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Enable static export for deployment flexibility
-  output: 'export',
+  output: 'export', // Tells Next.js to build static HTML files
+  basePath: '/pdf', // Tells Next.js to load assets from the /pdf folder
+  images: {
+    unoptimized: true, // Required for static GitHub Pages exports
+  },
 
   // Webpack configuration for WASM modules
   webpack: (config, { isServer, webpack }) => {
